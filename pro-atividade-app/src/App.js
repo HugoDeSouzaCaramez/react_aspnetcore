@@ -57,7 +57,11 @@ function App() {
                    - título
                 </h5>
                 <h6>
-                  Prioridade: Normal
+                  Prioridade: 
+                  <span className='ms-1 text-black'>
+                    <i className='me-1 far fa-frown'></i>
+                    Alta
+                  </span>
                 </h6>
               </div>
               <p className='card-text'>
