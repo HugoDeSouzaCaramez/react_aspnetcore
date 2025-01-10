@@ -1,5 +1,10 @@
 npx create-react-app pro-atividade-app
 
+npm install react-bootstrap bootstrap@5.0.2
+
+npm install bootstrap@5
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
