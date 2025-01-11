@@ -66,7 +66,10 @@ function App() {
 
   return (
     <>
-      <AtividadeForm />
+      <AtividadeForm 
+        addAtividade={addAtividade}
+        atividades={atividades}
+      />
       <div className="mt-3">
         { atividades.map((ativ) => (
           <div key={ativ.id} className={'card mb-2 shadow-sm border-' + prioridadeStyle(ativ.prioridade)}>

@@ -1,4 +1,4 @@
-export default function AtividadeForm() {
+export default function AtividadeForm(props) {
     return (
         <form className='row g-3'>
         <div className="col-md-6">
@@ -9,7 +9,7 @@ export default function AtividadeForm() {
             readOnly
             id="id" 
             value={Math.max.apply(
-              Math, atividades.map(
+              Math, props.atividades.map(
                 atividade => atividade.id)) 
               + 1}
           />
@@ -35,7 +35,7 @@ export default function AtividadeForm() {
         <div className='col-12'>
           <button 
             className='btn btn-outline-secondary' 
-            onClick={addAtividade}
+            onClick={props.addAtividade}
           >
             + Atividade
           </button>
