@@ -21,6 +21,14 @@ export default function AtividadeForm(props) {
         setAtividade(prev => ({ ...prev, [name]: value }));
     };
 
+    const handleCancelar = (e) => {
+        e.preventDefault()
+
+        //cancelarAtividades()   
+        
+        setAtividade(atividadeInicial)
+    }
+
     function atividadeAtual() {
         if (props.atividadeSelecionada.id !== 0) {
             return props.atividadeSelecionada
@@ -30,6 +38,8 @@ export default function AtividadeForm(props) {
     }
 
     return (
+        <>
+        <h1>Atividade {atividade.id !==0 ? atividade.id : ''}</h1>
         <form className='row g-3'>
             <div className="col-md-6">
                 <label htmlFor="titulo" className="form-label">Título</label>
@@ -70,16 +80,38 @@ export default function AtividadeForm(props) {
             </div>
             <hr />
             <div className='col-12'>
-                <button 
-                    className='btn btn-outline-secondary' 
-                    onClick={(e) => {
-                        e.preventDefault();
-                        props.addAtividade(e);
-                    }}
-                >
-                    + Atividade
-                </button>
+                {
+                    atividade.id === 0 ?(
+                    <button 
+                        className='btn btn-outline-secondary' 
+                        onClick={(e) => {
+                            e.preventDefault();
+                            props.addAtividade(e);
+                        }}
+                    >
+                        <i className="fas fa-plus me-2"></i>
+                        Atividade
+                    </button>
+                    ) : (
+                    <>
+                        <button 
+                            className='btn btn-outline-success me-2' 
+                            type="submit"
+                        >
+                            <i className="fas fa-plus me-2"></i>
+                            Salvar
+                        </button>
+                        <button 
+                            className='btn btn-outline-warning' 
+                            onClick={handleCancelar}
+                        >
+                            <i className="fas fa-plus me-2"></i>
+                            Cancelar
+                        </button>
+                    </>
+                )}
             </div>
         </form>
+        </>
     );
 }
