@@ -1,17 +1,31 @@
+import { useState } from "react"
+
 export default function AtividadeForm(props) {
+    const {atividade, setAtividade} = useState({})
+    const inputTextHandler = (e) => {
+        const {name, value} = e.target
+
+        setAtividade({...atividade, [name]: value})
+    }
+
+    // Math.max.apply(
+    //     Math, 
+    //     props.atividades.map(
+    //       atividade => atividade.id
+    //     )
+    // ) + 1
+
     return (
         <form className='row g-3'>
         <div className="col-md-6">
           <label for="id" className="form-label">Id</label>
           <input 
+            name = "id"
             type="text" 
+            onChange={inputTextHandler}
             className="form-control" 
-            readOnly
             id="id" 
-            value={Math.max.apply(
-              Math, props.atividades.map(
-                atividade => atividade.id)) 
-              + 1}
+            value={atividade.id}
           />
         </div>
         <div className='col-md-6'>
