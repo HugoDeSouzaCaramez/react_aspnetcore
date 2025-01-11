@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function AtividadeForm(props) {
     const [atividade, setAtividade] = useState({
@@ -8,6 +8,9 @@ export default function AtividadeForm(props) {
         descricao: ''
     });
 
+    useEffect(() => {
+    })
+
     const inputTextHandler = (e) => {
         const { name, value } = e.target;
         setAtividade(prev => ({ ...prev, [name]: value }));
@@ -16,14 +19,14 @@ export default function AtividadeForm(props) {
     return (
         <form className='row g-3'>
             <div className="col-md-6">
-                <label htmlFor="id" className="form-label">Id</label>
+                <label htmlFor="titulo" className="form-label">Título</label>
                 <input 
-                    name="id"
-                    type="text"
+                    name="titulo"
+                    value={atividade.titulo || ''}
                     onChange={inputTextHandler}
-                    className="form-control"
-                    id="id"
-                    value={atividade.id || ''}
+                    type="text" 
+                    className="form-control" 
+                    id="titulo" 
                 />
             </div>
             <div className='col-md-6'>
@@ -41,20 +44,9 @@ export default function AtividadeForm(props) {
                     <option value='3'>Alta</option>
                 </select>
             </div>
-            <div className="col-md-6">
-                <label htmlFor="titulo" className="form-label">Título</label>
-                <input 
-                    name="titulo"
-                    value={atividade.titulo || ''}
-                    onChange={inputTextHandler}
-                    type="text" 
-                    className="form-control" 
-                    id="titulo" 
-                />
-            </div>
-            <div className="col-md-6">
+            <div className="col-md-12">
                 <label htmlFor="descricao" className="form-label">Descrição</label>
-                <input 
+                <textarea 
                     name="descricao"
                     value={atividade.descricao || ''}
                     onChange={inputTextHandler}
