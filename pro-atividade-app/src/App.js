@@ -45,14 +45,14 @@ function App() {
     }
   }
 
-  function prioridadeStyle(param) {
+  function prioridadeStyle(param, icone) {
     switch(param) {
       case '1':
-        return 'smile'
+        return  icone ? 'smile' : 'success'
       case '2':
-        return 'meh'
+        return  icone ? 'meh' : 'dark'
       case '3':
-        return 'frown'
+        return  icone ? 'frwon' : 'warning'
       default:
         return 'Não definida'
     }
@@ -63,7 +63,16 @@ function App() {
       <form className='row g-3'>
         <div className="col-md-6">
           <label for="id" className="form-label">Id</label>
-          <input type="text" className="form-control" id="id" />
+          <input 
+            type="text" 
+            className="form-control" 
+            readOnly
+            id="id" 
+            value={Math.max.apply(
+              Math, atividades.map(
+                atividade => atividade.id)) 
+              + 1}
+          />
         </div>
         <div className='col-md-6'>
           <label className='form-label'>Prioridade</label>
@@ -94,7 +103,7 @@ function App() {
       </form>
       <div className="mt-3">
         { atividades.map((ativ) => (
-          <div key={ativ.id} className='card mb-2 shadow-sm'>
+          <div key={ativ.id} className={'card mb-2 shadow-sm border-' + prioridadeStyle(ativ.prioridade)}>
             <div className='card-body'>
               <div className='d-flex justify-content-between'>
                 <h5 className='card-title'>
@@ -103,8 +112,8 @@ function App() {
                 </h5>
                 <h6>
                   Prioridade: 
-                  <span className='ms-1 text-black'>
-                    <i className={'me-1 far fa-' + prioridadeStyle(ativ.prioridade)}></i>
+                  <span className={'ms-1 text-' + prioridadeStyle(ativ.prioridade)}>
+                    <i className={'me-1 far fa-' + prioridadeStyle(ativ.prioridade, true)}></i>
                     {prioridadeLabel(ativ.prioridade)}
                   </span>
                 </h6>
