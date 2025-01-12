@@ -39,11 +39,13 @@ function App() {
         setAtividade({ id: 0 });
     }
 
-    function deletarAtividade(id) {
+    const deletarAtividade = async (id) => {
+       if (await api.delete(`atividade/${id}`)) {
         const atividadesFiltradas = atividades.filter(
             (atividade) => atividade.id !== id
         );
         setAtividades([...atividadesFiltradas]);
+       }
     }
 
     function pegarAtividade(id) {
