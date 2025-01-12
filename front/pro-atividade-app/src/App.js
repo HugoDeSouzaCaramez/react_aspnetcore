@@ -9,20 +9,20 @@ function App() {
     const [atividades, setAtividades] = useState([]);
     const [atividade, setAtividade] = useState({ id: 0 });
 
-    const pegaTodasAtividades = () => {
-       const response = api.get('atividade')
+    const pegaTodasAtividades = async () => {
+       const response = await api.get('atividade')
        return response.data
     }
 
     useEffect(() => {
-        const getAtividades = () => {
-            const todasAtividades = pegaTodasAtividades()
+        const getAtividades = async () => {
+            const todasAtividades = await pegaTodasAtividades()
             if (todasAtividades) {
                 setAtividades(todasAtividades)
             }
         }
         getAtividades()
-    }, [atividades]);
+    }, []);
 
     function addAtividade(ativ) {
         setAtividades([...atividades, { ...ativ, id: index }]);
