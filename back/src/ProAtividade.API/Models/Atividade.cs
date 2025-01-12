@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ProAtividade.API.Data;
 
 namespace ProAtividade.API.Models
 {
@@ -13,7 +14,7 @@ namespace ProAtividade.API.Models
 
         public string Descricao { get; set; }
 
-        public string Prioridade { get; set; }
+        public Prioridade Prioridade { get; set; }
 
         public Atividade()
         {
